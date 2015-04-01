@@ -1,0 +1,44 @@
+<ion-view>
+
+  <ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide>
+      <div class="slide-x x hand">
+        <a ng-click=returnHome()><i class="ion-close"></i></a>
+      </div>
+      <div class="logo-vibe">
+        <img src="img/ViBE_Purple.png" />
+      </div>
+      <br/>
+      <h3>Welcome to ViBE!</h3>
+      <div class="skip">
+        <div ng-click="returnHome()" class="button button-light">Skip intro</div><br/><br/>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide-x x hand">
+        <a ng-click="returnHome()"><i class="ion-close"></i></a>
+      </div>
+      <div class="head-image">
+        <img src="img/scan.png" />
+      </div>
+
+      <div id="instructions">
+        <ol>
+          <li>Scan the QR code</li>
+          <li>Register or log in to ViBE</li>
+          <li>Show the code, and get the special!</li>
+        </ol>
+      </div>
+
+      <div class="skip">
+        <div ng-click="returnHome()" class="button button-light">Try ViBE!</div><br/><br/>
+      </div>
+    </ion-slide>
+    <!-- <ion-slide>
+      <h3>Any questions?</h3>
+      <p>
+        Too bad!
+      </p>
+    </ion-slide> -->
+  </ion-slide-box>
+</ion-view>

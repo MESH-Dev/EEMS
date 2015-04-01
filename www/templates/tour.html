@@ -1,0 +1,115 @@
+<ion-view ng-init="init()">
+
+  <!-- <ion-header-bar>
+    <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="myGoBack()"></a>
+    <h1 class="title">{{ title }}</h1>
+    <a href="#/list/{{ id }}" class="button icon-right button-clear button-dark ion-navicon"></a>
+  </ion-header-bar> -->
+
+  <ion-nav-bar style="background-color: {{ toplinecolor }}">
+    <div class="buttons primary-buttons">
+      <a href="#" class="button icon-left button-clear ion-chevron-left nav-icon-dark"></a>
+    </div>
+    <div class="buttons primary-buttons pull-right">
+      <a ng-click="list.state=!list.state" class="button icon-right button-clear nav-icon-dark" ng-class="list.state ? 'ion-map' : 'ion-navicon'"></a>
+    </div>
+  </ion-nav-bar>
+
+
+  <ion-content>
+    <div class="button button-clear ion-navigate" id="compass" ng-click="centerOnLocation()"></div>
+    <div id="map" data-tap-disabled="true"></div>
+    <div id="banner" ng-style="{'background-image':'url('+imgSrc+')'}" ng-class="toggle.state ? 'vis' : ''" style="visibility: hidden; opacity: 0;">
+    </div>
+
+    <div class="tour-list" ng-class="list.state ? 'full-tour-list' : ''">
+      <div id="list">
+
+        <div class="item" ng-repeat="tourstop in tour" ng-click="jumpToStop(tourstop); list.state=!list.state; scrollTop();">
+            <div class="list-15">
+              <div class="tour-body-number-list">
+                {{ tourstop['number'] + 1 }}
+              </div>
+            </div>
+            <div class="list-70">
+              <div class="list-body-text">
+                <div class="tour-body-text-title">
+                  <span>{{ tourstop['title'] }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="list-15">
+              <div class="tour-arrow-right">
+
+              </div>
+            </div>
+        </div>
+
+      </div>
+      <div class="topline" style="background-color: {{ toplinecolor }}"></div>
+    </div>
+
+    <div id="description" ng-class="toggle.state ? 'full-description' : ''">
+      <div class="topline" style="background-color: {{ toplinecolor }}" on-tap="toggle.state=!toggle.state; toggleArrow();" on-swipe="toggle.state=!toggle.state; toggleArrow();"><img ng-src="{{ toggle.state == true && 'img/WhiteDownArrow.png' || 'img/WhiteUpArrow.png' }}" /></div>
+      <div class="description-text">
+        <!-- <div class="row" on-swipe="toggle.state=!toggle.state; toggleArrow();">
+          <div class="col center">
+            <div class="toggle-arrow"><img ng-src="{{ arrow_icon }}" /></div>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="col col-10 hand">
+            <div class="tour-arrow-left" ng-click="prevStep()" ng-class="toggle.state ? 'arrow-hide' : ''">
+              <i class="ion-arrow-left-b"></i>
+            </div>
+          </div>
+          <div class="col col-80" on-tap="toggle.state=!toggle.state; toggleArrow();" on-swipe="toggle.state=!toggle.state; toggleArrow();">
+            <div class="tour-body-number">
+              {{ active + 1 }}
+            </div>
+            <div class="tour-body-text">
+              <div class="tour-body-text-title">
+                <span>{{ tour[active]['title'] }}</span>
+              </div>
+              <p>
+                {{ tour[active]['description'] }}
+              </p>
+            </div>
+          </div>
+          <div class="col col-10 hand" ng-click="nextStep()" ng-class="toggle.state ? 'arrow-hide' : ''">
+            <div class="tour-arrow-right">
+              <i class="ion-arrow-right-b"></i>
+            </div>
+          </div>
+          <div class="col col-10 hand" on-tap="toggle.state=!toggle.state; toggleArrow();" ng-class="toggle.state ? '' : 'arrow-hide'">
+            <div class="tour-close">
+              <i class="ion-close x"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-class="{'no-audio': tour[active]['audio'] == false }">
+          <div class="col col-10"></div>
+          <div class="col col-80">
+            <div class="tour-body-audio">
+              <a class="item item-icon-left item-icon-right">
+                <i class="icon ion-radio-waves"></i>
+                Play audio
+                <i class="icon" ng-class="play.state ? 'ion-pause' : 'ion-play'" ng-click="control(tour[active]['audio']); play.state=!play.state;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="bar bar-footer">
+    <div class="button-bar">
+      <!-- <a ng-repeat="tour in tours" class="col button {{ tour }}" ng-click="toggleObject.tour = $index; changeTour(tour)" ng-class="{'cover' : toggleObject.tour == $index}"><img src="{{ footer-icon }}" /></a> -->
+      <a class="col button {{ publicartsclass }}" ng-click="changeTour('Public Arts')"><img ng-src="{{ publicartsicon }}" /></a>
+      <a class="col button {{ historicalbuildingsclass }}" ng-click="changeTour('Historical Buildings')"><img ng-src="{{ historicalbuildingsicon }}" /></a>
+      <a class="col button {{ fulltourclass }}" ng-click="changeTour('Full Tour')"><img ng-src="{{ fulltouricon }}" /></a>
+    </div>
+  </div>
+
+</ion-view>

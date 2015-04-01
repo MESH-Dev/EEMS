@@ -1,0 +1,94 @@
+<ion-view>
+
+  <!-- <ion-nav-bar style="border-bottom: 0px;">
+
+  </ion-nav-bar> -->
+
+  <script id="my-modal.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar>
+        <div class="buttons primary-buttons">
+          <a ng-click="closeModal()" class="button icon-left button-clear ion-close icon-close"></a>
+        </div>
+        <h1 class="title">Charleston East End</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="modal-container">
+          <h3>Welcome to the Charleston East End tour guide app!</h3>
+          <p>
+          Take tours of Charleston’s East End and get more information about local establishments, businesses, outdoor art, and historical monuments and buildings.
+          </p>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+
+
+
+  <ion-content class="padding bg" style="background: url('img/bg.png') no-repeat center center fixed; background-size:cover;">
+    <div class="landing">
+
+      <div class="row">
+        <div class="col-10">
+          <div class="buttons primary-buttons">
+            <a ng-click="openModal()" class="button icon-left button-clear ion-information-circled"></a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="logo">
+            <img src="img/eastend-transparent.png" />
+          </div>
+        </div>
+        <div class="col-10">
+
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <a href="#/tour">
+            <div class="col button tour">
+              <img src="img/Home_Tour.png" /> <span>TOUR</span>
+              <p>
+                Our neighborhood's public art and historical buildings
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <a href="#/explore">
+            <div class="col button explore" >
+              <img src="img/Home_Explore.png" /> <span>EXPLORE</span>
+              <p>
+                Make your own way through our neighborhood's businesses and art
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- <a ng-click="scanBarcode()"> -->
+          <a ng-click="doSomething()">
+            <div class="col button vibe">
+              <img src="img/ViBE_Purple.png" />
+              <p>
+                Check in for local deals!
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

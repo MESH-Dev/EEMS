@@ -1,0 +1,112 @@
+<ion-view>
+
+  <!-- <ion-header-bar>
+  <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="myGoBack()"></a>
+  <h1 class="title">{{ title }}</h1>
+  <a href="#/list/{{ id }}" class="button icon-right button-clear button-dark ion-navicon"></a>
+</ion-header-bar> -->
+
+<ion-nav-bar style="background-color: #ff4e4e;">
+  <div class="buttons primary-buttons">
+    <a href="#" class="button icon-right button-clear ion-chevron-left nav-icon-dark"></a>
+  </div>
+  <div class="buttons primary-buttons pull-right">
+    <a ng-click="list.state=!list.state" class="button icon-right button-clear nav-icon-dark" ng-class="list.state ? 'ion-map' : 'ion-navicon'"></a>
+  </div>
+</ion-nav-bar>
+
+<ion-content ng-class="list.state ? 'over' : ''">
+  <div class="button button-clear ion-navigate" id="compass" ng-click="centerOnLocation()"></div>
+  <div id="map" data-tap-disabled="true" style="position: absolute"></div>
+  </div>
+
+  <div class="tour-list" ng-class="list.state ? 'full-tour-list' : ''">
+    <div id="list">
+
+      <div class="item" ng-repeat="tourstop in explore" ng-click="jumpToStop(tourstop); list.state=!list.state; scrollTop();">
+          <div class="list-15">
+            <div class="tour-body-number-list">
+
+            </div>
+          </div>
+          <div class="list-70">
+            <div class="list-body-text">
+              <div class="tour-body-text-title">
+                <span>{{ tourstop['title'] }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="list-15">
+            <div class="tour-arrow-right">
+
+            </div>
+          </div>
+      </div>
+
+    </div>
+    <div class="topline" style="background-color: {{ toplinecolor }}"></div>
+  </div>
+
+  <div id="filter" ng-class="toggle.state ? 'filter-open' : 'filter-closed'">
+    <div class="topline filter-bg"></div>
+    <!-- <div class="filter-toggle" on-swipe="toggle.state=!toggle.state; toggleArrow()">
+      <div class="row">
+        <span class="filter-toggle-arrow"><img ng-src="{{ arrow_icon }}" /></span>
+      </div>
+      <div class="row">
+        <span class="filter-toggle-title">FILTER</span>
+      </div>
+    </div> -->
+    <div class="filters">
+      <a ng-repeat="filter in filters" ng-click="toggleObject.filter = $index; resetMarkers(filter.label)" class="button filter-button" ng-class="{'btn-{{filter.label}}' : toggleObject.filter == $index}">{{ filter.title }}</a>
+    </div>
+  </div>
+  <div id="info" ng-class="panel_active.state ? 'filter-open' : 'filter-closed'">
+    <div class="topline filter-bg"></div>
+
+    <div class="description-text">
+      <div class="row">
+
+        <div class="col col-90">
+          <div class="tour-body-text">
+            <div class="tour-body-text-title">
+              <span>{{ active_title }}</span>
+            </div>
+            <p>
+              {{ active_address }}
+              <span ng-show="active_phone.length > 0"><br/>{{ active_phone }}</span>
+              <span ng-show="active_facebook.length > 0 || active_twitter.length > 0 || active_website.length > 0"><br/><a class="social" ng-show="active_facebook.length > 0" href="{{ active_facebook }}"><i class="ion-social-facebook"></i></a> <a ng-show="active_twitter.length > 0" href="{{ active_twitter }}" class="social"><i class="ion-social-twitter"></i></a> <a class="social" ng-show="active_website.length > 0" href="{{ active_website }}">Website</a></span>
+            </p>
+            <p>
+              <div class="logo-item" ng-show="active_logo.length > 0">
+                <img ng-src="{{ active_logo }}" />
+              </div>
+              {{ active_description }}
+            </p>
+          </div>
+        </div>
+        <div class="col col-10 hand" ng-click="panel_active.state = false; scrollTop();">
+          <div class="tour-body-text-title">
+            <i class="ion-close x"></i>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<div class="bar bar-footer">
+  <div class="button-bar">
+    <a class="col button" ng-class="toggle.state ? 'filter-no-bg' : 'filter-bg'" ng-click="toggle.state=!toggle.state; panel_active.state = false;">
+      <div class="title">
+        <img ng-src="{{ toggle.state &&  'img/Filter-red.png' || 'img/Filter-white.png' }}" class="filter-icon" />
+        <div class="filter" ng-class="toggle.state ? 'filter-text' : ''">Filter</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view>
+
+  <ion-nav-bar class="bar-positive">
+    <!-- <ion-nav-back-button class="button-clear">
+      <i class="ion-arrow-left-c"></i> Back
+    </ion-nav-back-button> -->
+    <div class="buttons primary-buttons">
+      <a href="#" class="button icon-right button-clear ion-chevron-left white"></a>
+    </div>
+    <a href="#/tour/{{ id }}" class="button icon-right pull-right button-clear button-dark ion-map white" nav-transition="none"></a>
+  </ion-nav-bar>
+
+  <ion-content>
+    <div id="list">
+
+      <a class="item" href="#" ng-repeat="loc in locs[0]['tourstops']">
+        {{ loc.tour_stop.post_title }}
+      </a>
+
+    </div>
+  </ion-content>
+
+</ion-view>
