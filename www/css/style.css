@@ -246,3 +246,5 @@ h1,h2,h3,h4,h5,h6 { font-family: 'din-boldregular'; text-transform: uppercase; }
 
 .logo-item { float: left; margin-right: 15px; margin-bottom: 10px; width: 75px; }
 .logo-item img { display: block; width: 100%; height: auto; }
+
+.sponsor { width: 100%; height: auto; }
